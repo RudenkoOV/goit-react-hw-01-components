@@ -1,16 +1,20 @@
-export const App = () => {
+import './App.css';
+import UserCard from './Usercard/UserCard';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import Home from './Pages/Home';
+import { NotFoundPage } from './Pages/NotFoundPage';
+
+function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/tweets" element={<UserCard />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
-};
+}
+
+export default App;
